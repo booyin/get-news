@@ -1,0 +1,56 @@
+# Trend Score 规则打分配置
+# 对应文档第36节，六个维度权重合计100分
+# 规则阶段(阶段18)不调用AI，只用关键词/时间/来源做粗筛
+
+weights:
+  freshness: 25        # 趋势性
+  spread: 20            # 传播互动(用跨源重复次数代理)
+  growth: 15             # 增长速度(第一版无时序数据,给中性分)
+  commercial_keywords: 15  # 商业价值(关键词匹配)
+  replicability_keywords: 15  # 可复制性(关键词匹配)
+  novelty_keywords: 10    # 新颖程度(关键词匹配)
+
+# 新鲜度衰减：超过这么多小时，新鲜度分数归零
+freshness_max_hours: 48
+
+commercial_keywords:
+  - "AI"
+  - "startup"
+  - "funding"
+  - "revenue"
+  - "raises"
+  - "launch"
+  - "acquired"
+  - "valuation"
+  - "monetize"
+  - "SaaS"
+
+replicability_keywords:
+  - "open source"
+  - "open-source"
+  - "tutorial"
+  - "how to"
+  - "guide"
+  - "template"
+  - "framework"
+  - "toolkit"
+
+novelty_keywords:
+  - "first"
+  - "new"
+  - "launches"
+  - "unveils"
+  - "introducing"
+  - "show hn"
+  - "announcing"
+
+# 分级阈值，对应文档第36节
+grade_thresholds:
+  # 注：这套阈值是基于当前3个数据源、97条样本的真实分数分布校准的初始值
+  # 随着数据源增多、传播度/增长速度维度有更多真实数据支撑，分数会整体上移
+  # 届时应重新校准这里的阈值，这是预期内的迭代过程，不是bug
+  S: 70
+  A: 60
+  B: 50
+  C: 40
+  # <40 = filtered

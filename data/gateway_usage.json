@@ -1,0 +1,28 @@
+{
+  "2026-09-10": {
+    "openrouter": {
+      "success": 53,
+      "fail": 0
+    },
+    "_by_client": {
+      "verify-usage": 1,
+      "pc": 1,
+      "unknown": 35,
+      "radar": 49
+    },
+    "cloudflare": {
+      "success": 31,
+      "fail": 2
+    }
+  },
+  "2026-09-11": {
+    "openrouter": {
+      "success": 35,
+      "fail": 0
+    },
+    "_by_client": {
+      "radar": 34,
+      "unknown": 1
+    }
+  }
+}

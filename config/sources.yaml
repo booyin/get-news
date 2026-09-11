@@ -1,0 +1,18 @@
+# 数据源配置
+# 对应文档第33、34节：仅使用公开合法渠道，禁止绕过登录/反爬
+
+rss_sources:
+  - name: "Hacker News"
+    url: "https://news.ycombinator.com/rss"
+    category: "tech"
+    enabled: true
+
+  - name: "Product Hunt"
+    url: "https://www.producthunt.com/feed"
+    category: "product"
+    enabled: true
+
+  - name: "TechCrunch"
+    url: "https://techcrunch.com/feed/"
+    category: "tech"
+    enabled: true
