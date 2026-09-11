@@ -93,6 +93,26 @@ def main():
     else:
         print("⚠️ 本次没有新的机会分析结果，跳过导出")
 
+    # 8. 同步到GitHub
+    step("阶段8/8: 同步到GitHub")
+    import subprocess
+    try:
+        subprocess.run(["git", "add", "-A"], cwd="/opt/ai-radar", check=True)
+        diff_check = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"], cwd="/opt/ai-radar"
+        )
+        if diff_check.returncode == 0:
+            print("无变化，跳过提交")
+        else:
+            subprocess.run(
+                ["git", "commit", "-m", f"daily update {run_date}"],
+                cwd="/opt/ai-radar", check=True
+            )
+            subprocess.run(["git", "push", "origin", "main"], cwd="/opt/ai-radar", check=True)
+            print("✅ 已同步到GitHub")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ Git同步失败: {e}")
+
     print()
     print(f"🎉 本次运行完成 — {run_date}")
 
