@@ -47,23 +47,30 @@ def _format_item(item: dict, rank: int = None) -> str:
     return "\n".join(lines)
 
 
-def export_daily_markdown(run_date: str = None) -> str:
+def export_daily_markdown(run_date: str = None, item_ids: list = None) -> str:
     if run_date is None:
         run_date = str(date.today())
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    id_filter = ""
+    params = []
+    if item_ids:
+        placeholders = ",".join("?" * len(item_ids))
+        id_filter = f"AND i.id IN ({placeholders})"
+        params = item_ids
+
     with get_connection() as conn:
-        items = conn.execute('''
+        items = conn.execute(f'''
             SELECT i.*,
                    l2.content as l2_content,
                    opp.content as opp_content
             FROM items i
             LEFT JOIN analyses l2 ON i.id = l2.item_id AND l2.analysis_type = 'l2_deep'
             LEFT JOIN analyses opp ON i.id = opp.item_id AND opp.analysis_type = 'opportunity'
-            WHERE i.opportunity_score_overall > 0
+            WHERE i.opportunity_score_overall > 0 {id_filter}
             ORDER BY i.opportunity_score_overall DESC
-        ''').fetchall()
+        ''', params).fetchall()
         items = [dict(r) for r in items]
 
     top3 = items[:3]

@@ -17,12 +17,16 @@
   },
   "2026-09-11": {
     "openrouter": {
-      "success": 35,
+      "success": 52,
       "fail": 0
     },
     "_by_client": {
-      "radar": 34,
+      "radar": 136,
       "unknown": 1
+    },
+    "cloudflare": {
+      "success": 70,
+      "fail": 15
     }
   }
 }

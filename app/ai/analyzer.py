@@ -108,7 +108,7 @@ def load_l2_prompt_template() -> str:
 def run_l2_analysis(item: dict, _retry: bool = True) -> dict:
     """
     对单条数据做L2深度分析，返回 {"success": bool, "analysis": dict, "raw_error": str}
-    使用 radar-smart(金融微调模型)，对应文档第39节17个维度。
+    使用 radar-fast(响应更快)，精简为8个核心维度(原17维度因耗时过长已简化)。
     JSON解析失败时自动重试一次(AI生成的JSON偶发包含未转义特殊字符,重新生成通常能避开)。
     """
     template = load_l2_prompt_template()
@@ -118,7 +118,7 @@ def run_l2_analysis(item: dict, _retry: bool = True) -> dict:
         summary=item.get("summary", "")[:500],
     )
 
-    result = gateway_chat(prompt, model="radar-smart", timeout=60.0)
+    result = gateway_chat(prompt, model="radar-fast", timeout=25.0)
 
     if not result["success"]:
         return {"success": False, "analysis": None, "raw_error": result["error"]}
@@ -182,7 +182,7 @@ def run_opportunity_scoring(item: dict, l2_analysis: dict, _retry: bool = True) 
         l2_analysis=json.dumps(l2_analysis, ensure_ascii=False, indent=2),
     )
 
-    result = gateway_chat(prompt, model="radar-smart", timeout=60.0)
+    result = gateway_chat(prompt, model="radar-fast", timeout=25.0)
 
     if not result["success"]:
         return {"success": False, "score": None, "raw_error": result["error"]}
@@ -203,7 +203,7 @@ def process_opportunity_batch() -> dict:
     对所有已完成L2分析、尚未打Opportunity Score的条目批量打分。
     写入 items.opportunity_score_overall + analyses表(type=opportunity)。
     """
-    stats = {"processed": 0, "success": 0, "failed": 0}
+    stats = {"processed": 0, "success": 0, "failed": 0, "item_ids": []}
 
     with get_connection() as conn:
         rows = conn.execute('''
@@ -242,6 +242,7 @@ def process_opportunity_batch() -> dict:
             conn.commit()
 
         stats["success"] += 1
+        stats["item_ids"].append(item["id"])
         print(f"  ✅ [{item['title'][:40]}] 机会分: {overall} - {score.get('verdict', '')}")
 
     return stats
