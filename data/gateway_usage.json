@@ -21,11 +21,11 @@
       "fail": 0
     },
     "_by_client": {
-      "radar": 138,
-      "unknown": 1
+      "radar": 167,
+      "unknown": 3
     },
     "cloudflare": {
-      "success": 72,
+      "success": 103,
       "fail": 15
     }
   }

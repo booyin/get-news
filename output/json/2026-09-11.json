@@ -1,40 +1,73 @@
 {
   "run_date": "2026-09-11",
-  "total_items": 1,
+  "total_items": 2,
   "top3_ids": [
-    "25aafca6e095feaf"
+    "e9c45b99efa5a169",
+    "552918385ee062b9"
   ],
   "items": [
     {
-      "id": "25aafca6e095feaf",
-      "title": "Show HN: Algo-Trading-Skills - 501 agent skills for trading infrastructure",
-      "url": "https://github.com/HimanshuJ16/Algo-Trading-Skills",
-      "source": "Hacker News",
-      "published_at": "2026-09-11T02:37:28+00:00",
-      "trend_score": 51.8,
-      "opportunity_score": 75.0,
+      "id": "e9c45b99efa5a169",
+      "title": "Nscale adds former OpenAI exec Fidji Simo to its board ahead of potential IPO",
+      "url": "https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/",
+      "source": "TechCrunch",
+      "published_at": "2026-09-11T16:46:25+00:00",
+      "trend_score": 50.0,
+      "opportunity_score": 71.0,
       "l1_screening": {
         "keep": true,
-        "reason": "涉及商业机会，商业模式"
+        "reason": "涉及商业机会和高管加盟，值得研究商业模式"
       },
       "l2_analysis": {
-        "commercial_value": "提供算法交易 infrastructural 的技能，潜在带来高效的交易",
-        "competition": "中等",
-        "estimated_cost": "无明显成本",
-        "how_to_replicate": "通过学习和实践，普通人可以通过 online courses 和 communities 获得这些技能",
-        "monetization": "通过提供算法交易服务、交易软件开发或教育课程等方式赚钱",
-        "replicable": "可复制",
-        "technical_difficulty": "中",
-        "what_happened": "Algo-Trading-Skills 创作了 501 个 agent skills for trading infrastructure"
+        "commercial_value": "Nscale在无人驾驶和自动驾驶领域具有巨大的商业价值",
+        "competition": "该行业竞争较大，但Nscale具有独特的技术优势",
+        "estimated_cost": "估计投资Nscale需要数百万美元",
+        "how_to_replicate": "普通人可以通过投资Nscale或参与无人驾驶行业的研究和开发",
+        "monetization": "Nscale可以通过无人驾驶服务和技术销售赚取收入",
+        "replicable": "该机会可以被普通人通过投资Nscale或参与无人驾驶行业",
+        "technical_difficulty": "技术难度：中高",
+        "what_happened": "Nscale邀请前OpenAI高管Fidji Simo加入董事会，可能是公司即将上市的前奏"
       },
       "opportunity_detail": {
-        "commercial_potential": 20,
-        "low_risk": 10,
+        "commercial_potential": 25,
+        "low_risk": 8,
         "monetization_clarity": 15,
-        "overall": 75,
-        "replicability": 25,
+        "overall": 71,
+        "replicability": 18,
         "timing": 5,
-        "verdict": "值得考虑，结合学习和实践可获得高效的算法交易技能"
+        "verdict": "值得考虑，但投资风险较高"
+      }
+    },
+    {
+      "id": "552918385ee062b9",
+      "title": "Re-Engineering YouTube for the Living Room: Bringing \"Chrobalt\" to RDK",
+      "url": "https://www.collabora.com/news-and-blog/news-and-events/re-engineering-youtube-for-the-living-room-bringing-%E2%80%9Cchrobalt%E2%80%9D-to-rdk.html",
+      "source": "Hacker News",
+      "published_at": "2026-09-11T13:41:58+00:00",
+      "trend_score": 45.9,
+      "opportunity_score": 37.0,
+      "l1_screening": {
+        "keep": true,
+        "reason": "涉及商业机会、市场趋势"
+      },
+      "l2_analysis": {
+        "commercial_value": "商业价值：通过提高YouTube的体验，增加用户粘合度，提高广告收入",
+        "competition": "竞争情况：中等，其他视频平台也在改进体验",
+        "estimated_cost": "成本估算：高",
+        "how_to_replicate": "普通人怎么做：需要技术背景和资源",
+        "monetization": "怎么赚钱：通过提高广告收入和增加用户粘合度",
+        "replicable": "可复制：需要技术团队和资源",
+        "technical_difficulty": "技术难度：中",
+        "what_happened": "YouTube在重新设计为living room环境，引入新技术Chrobalt，用于RDK（Reference Device Platform）"
+      },
+      "opportunity_detail": {
+        "commercial_potential": 15,
+        "low_risk": 5,
+        "monetization_clarity": 10,
+        "overall": 37,
+        "replicability": 5,
+        "timing": 2,
+        "verdict": "虽然有商业价值，但高成本和复杂性限制了普通人/小团队的复制和变现"
       }
     }
   ]
